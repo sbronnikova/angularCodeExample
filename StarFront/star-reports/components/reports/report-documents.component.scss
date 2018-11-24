@@ -1,0 +1,18 @@
+.toolbar{
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-datagrid,
+:host ::ng-deep .dx-datagrid .dx-datagrid-content-fixed .dx-datagrid-table .dx-col-fixed,
+:host ::ng-deep .dx-toolbar,
+:host ::ng-deep .dx-button,
+:host ::ng-deep .dx-texteditor,
+:host ::ng-deep .dx-editor-cell .dx-texteditor,
+:host ::ng-deep .dx-editor-cell .dx-dropdowneditor,
+:host ::ng-deep .dx-editor-cell .dx-texteditor .dx-texteditor-input {
+    background-color: inherit;
+}
+:host ::ng-deep .dx-header-row .dx-datagrid-group-space,
+:host ::ng-deep .dx-data-row .dx-datagrid-group-space {
+    background-color: #fafafa;
+}

@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <clr-button-group class="toolbar">
+            <clr-button href="#" class="btn btn-sm" [disabled]="documentPreviewDisabled()" routerLinkActive="label-warning"
+                [routerLink]="['/reportTree',reportTemplate.uid, 'documents', selected && selected.length > 0 ? selected[0].uid : '', 'previewHtml']"
+                    (click)="previewHtml(selected)"><clr-icon shape="eye"></clr-icon>
+                    Просмотреть</clr-button>
+            <clr-button href="#" class="btn btn-sm" [disabled]="documentPreviewDisabled()" routerLinkActive="label-warning"
+                                (click)="previewPdf(selected)">Экспорт в PDF</clr-button>
+            <clr-button href="#" class="btn btn-sm" [disabled]="documentPreviewDisabled()" routerLinkActive="label-warning"
+                                (click)="previewXls(selected)">Экспорт в XLS</clr-button>
+        </clr-button-group>
+        <clr-button-group class="toolbar">
+            <clr-button href="#" class="btn btn-sm" [disabled]="!reportTemplate.hasNoRequiredAndDefaultParams" routerLinkActive="label-warning"
+            (click)="generate()"><clr-icon shape="bolt"></clr-icon>
+                    Генерировать</clr-button>            
+        </clr-button-group>
+        <dx-data-grid #grid
+                [dataSource]="dataSource"
+                [showBorders]="true"
+                [columnAutoWidth]="true"
+                [hoverStateEnabled]="true"
+                [(selectedRowKeys)]="selected"
+                (onDataErrorOccurred)="onError($event)">
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-filter-row  [visible]="true" ></dxo-filter-row>
+
+            <dxi-column dataField="name" caption="Наименование"></dxi-column>
+            <dxi-column dataField="createdAt" caption="Дата и время" dataType=date format="dd-MM-yyyy HH:mm:ss"></dxi-column>
+            <dxi-column dataField="createdBy.name" caption="Пользователь"></dxi-column>
+
+            <dxo-remote-operations [sorting]="true" [paging]="true" [filtering]="true"></dxo-remote-operations>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"></dxo-pager>
+        </dx-data-grid>
+    </div>
+</div>
